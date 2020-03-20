@@ -45,10 +45,8 @@ a=np.zeros((n,m),dtype=int) #ініціалізуємо матрицю з нул
 for i in range(n):
     for j in range(m):
         a[i,j]=int(input(f'A[{i+1},{j+1}]=')) #вводимо елементи матриці
-        for i in range(n):
-            for j in range(m):
-                if a[i,j]<0: #якщо елемент матриці < 0, замінюємо його на нуль
-                    a[i,j]=0
+            if a[i,j]<0: #якщо елемент матриці < 0, замінюємо його на нуль
+                a[i,j]=0
 print(a)
 
 #2.1
