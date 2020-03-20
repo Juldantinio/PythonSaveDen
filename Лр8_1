@@ -50,4 +50,65 @@ for i in range(n):
                     a[i,j]=0
 print(a)
 
+#2.1
+import random  #імпортуємо бібліотеку random
+m = [random.randint(1,10) for i in range(10)]  #генерація масиву з випадкових чисел
+print(m)
+value = int(input('Що знайти? = '))
+def linearSearch(m, value):  #лінійний пошук
+    i = 0
+    n = len(m)
+    while i < n: #поки і < кількості елементів
+        if m[i] == value: #якщо елемент = шуканому
+            return i #повертаємо і
+        else:
+            i += 1 #до і додається + 1
+    return 'Такого числа не існує'
+print(linearSearch(m,value)+1)
+
+#2.2
+import random #імпортуємо бібліотеку random
+n = [random.randint(1,10) for i in range(10)] #генерація масиву з випадкових чисел
+n = sorted(n) #сортування елементів у порядку зростання
+print(n)
+value = int(input('Що знайти = '))
+m = len(n) // 2 #бінарний пошук
+l = 0
+h = len(n) - 1
+while n[m] != value and l <= h: #поки елемент що не = шуканому, і довжина <= 0
+    if value > n[m]: #якщо шуканий елемент > позиції елемента
+        l = m + 1
+    else:
+        h = m - 1
+    m = (l + h) // 2
+if l > h: #якщо l набула більшого знач ніж сума кількості елементів списку
+    print("Такого елемента не існує")
+else:
+    print("Позиция елемента :", m+1)
+
+#2.3
+import string #імпортуємо бібліотеку string
+import random #імпортуємо бібліотеку random
+a = string.ascii_lowercase #усі маленькі букви
+b = string.ascii_uppercase #усі великі букви
+t_up = [random.choice(b) for i in range(10)] #генерація масиву з випадкових великих букв
+t_low = [random.choice(a) for j in range(10)] #генерація масиву з випадкових маленьких букв
+txt = t_low + t_up #об'єднання масивів маленьких та великих букв
+print(txt)
+value = str(input('Що знайти = ? '))  #елемент, який потрібно знайти
+def underSearch(txt, value): #прямий пошук
+    n = len(txt)
+    m = len(value)
+    for i in range(n - m + 1):
+        j = 0
+        while (j < m): #поки кількість елементів масиву > 0
+            if (txt[i + j] != value[j]): #якщо масив не = шуканому елементу
+                break
+            j += 1
+        if (j == m): #якщо кількість елементів = 0
+            return i
+    'Такого елемента не існує'
+print(underSearch(txt, value)+1)
+
+
 
